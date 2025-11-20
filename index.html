@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tharinda – AI Full Stack Engineer Portfolio</title>
+    <meta
+      name="description"
+      content="T.W.A.S Tharinda – Software Engineering Graduate specializing in Cloud, DevOps, and AI Technologies."
+    />
+    <meta
+      name="keywords"
+      content="Tharinda, Software Engineer, Cloud Engineer, DevOps, AI, Docker, Kubernetes, AWS, Sri Lanka"
+    />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%237c5cff'/><text x='50' y='62' font-size='58' text-anchor='middle' fill='white' font-family='Arial'>T</text></svg>"
+    />
+
+    <style>
+      :root {
+        --bg: #0b0d11;
+        --text: #e8eef9;
+        --muted: #b7c0d8;
+        --accent: #7c5cff;
+        --accent-2: #00e0d1;
+        --card: #121621;
+        --glass: rgba(255, 255, 255, 0.06);
+        --border: rgba(255, 255, 255, 0.12);
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        --radius: 20px;
+      }
+
+      /* Light theme vars */
+      .light {
+        --bg: #f6f7fb;
+        --text: #12141a;
+        --muted: #4a5568;
+        --accent: #6a5cff;
+        --accent-2: #00bfb2;
+        --card: #ffffff;
+        --glass: rgba(0, 0, 0, 0.04);
+        --border: rgba(0, 0, 0, 0.08);
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Reset */
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+          "Segoe UI Emoji";
+        background: radial-gradient(
+            1200px 800px at 80% -10%,
+            rgba(124, 92, 255, 0.25),
+            transparent 60%
+          ),
+          radial-gradient(
+            1000px 700px at -10% 10%,
+            rgba(0, 224, 209, 0.2),
+            transparent 55%
+          ),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* Layout */
+      .container {
+        width: min(1200px, 92%);
+        margin-inline: auto;
+      }
+
+      /* Navbar */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: saturate(140%) blur(8px);
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 68px;
+      }
+
+      .brand {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        box-shadow: var(--shadow);
+        font-weight: 700;
+        color: white;
+      }
+
+      .navlinks {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .navlinks a {
+        opacity: 0.8;
+        padding: 10px 12px;
+        border-radius: 12px;
+      }
+
+      .navlinks a:hover {
+        opacity: 1;
+        background: var(--glass);
+      }
+
+      .menu-btn {
+        display: none;
+        appearance: none;
+        border: 1px solid var(--border);
+        background: var(--glass);
+        padding: 10px 12px;
+        border-radius: 12px;
+        color: var(--text);
+      }
+
+      @media (max-width: 880px) {
+        .menu-btn {
+          display: block;
+        }
+
+        .navlinks {
+          position: fixed;
+          inset: 68px 0 auto auto;
+          right: 12px;
+          width: min(260px, 90vw);
+          background: color-mix(in lab, var(--card) 86%, transparent);
+          border: 1px solid var(--border);
+          border-radius: 16px;
+          padding: 12px;
+          flex-direction: column;
+          align-items: stretch;
+          transform: translateY(-10px);
+          opacity: 0;
+          pointer-events: none;
+          transition: 0.2s ease;
+          backdrop-filter: blur(10px);
+        }
+
+        .navlinks.open {
+          transform: translateY(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+      }
+
+      /* Hero */
+      .hero {
+        position: relative;
+        padding: 96px 0 72px;
+        overflow: hidden;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        padding: 8px 12px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: var(--glass);
+        font-size: 14px;
+      }
+
+      .glow-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent-2);
+        box-shadow: 0 0 18px var(--accent-2);
+      }
+
+      h1 {
+        font-size: clamp(34px, 4.5vw, 64px);
+        line-height: 1.05;
+        margin: 12px 0 8px;
+      }
+
+      .lead {
+        font-size: clamp(16px, 1.25vw, 20px);
+        opacity: 0.92;
+        margin-bottom: 24px;
+      }
+
+      .cta {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 14px 18px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: var(--glass);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .btn.primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        border-color: transparent;
+        color: white;
+        box-shadow: 0 10px 25px rgba(124, 92, 255, 0.35);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      /* Floating avatar card */
+      .avatar-card {
+        position: relative;
+        border: 1px solid var(--border);
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 18px;
+        box-shadow: var(--shadow);
+        isolation: isolate;
+      }
+
+      .avatar {
+        border-radius: 16px;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        filter: saturate(1.05) contrast(1.05);
+        width: 100%;
+      }
+
+      .rings {
+        position: absolute;
+        inset: -40% -25% -25% -40%;
+        z-index: -1;
+        opacity: 0.6;
+      }
+
+      .rings::before,
+      .rings::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: radial-gradient(
+            circle at 50% 50%,
+            rgba(124, 92, 255, 0.25),
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 60% 40%,
+            rgba(0, 224, 209, 0.25),
+            transparent 55%
+          );
+        filter: blur(40px);
+        animation: float 8s ease-in-out infinite alternate;
+        opacity: 0.9;
+      }
+
+      @keyframes float {
+        to {
+          transform: translateY(10px) scale(1.03) rotate(1deg);
+        }
+      }
+
+      /* Section base */
+      section {
+        padding: 72px 0;
+      }
+
+      .section-title {
+        font-size: clamp(24px, 3.2vw, 36px);
+        margin: 0 0 18px;
+      }
+
+      .section-sub {
+        color: var(--muted);
+        margin: 0 0 28px;
+      }
+
+      /* About */
+      .about {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+
+      .about .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 22px;
+      }
+
+      .section-title svg {
+        width: 1em;
+        height: 1em;
+        margin-right: 0.3em;
+        vertical-align: -0.15em;
+        opacity: 0.8;
+      }
+
+      .btn svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .about {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Skills */
+      .skills {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 14px;
+      }
+
+      .skill {
+        grid-column: span 6;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 12px 14px;
+      }
+
+      .skill .bar {
+        height: 8px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        flex: 1;
+        margin-left: 12px;
+        transform: scaleX(0.2);
+        transform-origin: left;
+      }
+
+      @media (max-width: 720px) {
+        .skill {
+          grid-column: span 12;
+        }
+      }
+
+      /* Projects */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 18px;
+      }
+
+      .card {
+        grid-column: span 4;
+        position: relative;
+        overflow: hidden;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        background: linear-gradient(
+          180deg,
+          color-mix(in lab, var(--card) 80%, transparent),
+          color-mix(in lab, var(--card) 92%, transparent)
+        );
+        box-shadow: var(--shadow);
+      }
+
+      .card .thumb {
+        aspect-ratio: 16/10;
+        background: linear-gradient(
+          135deg,
+          rgba(124, 92, 255, 0.2),
+          rgba(0, 224, 209, 0.18)
+        );
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        overflow: hidden;
+      }
+
+      .card .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+
+      .card:hover .thumb img {
+        transform: scale(1.05);
+      }
+
+      .card .content {
+        padding: 16px;
+      }
+
+      .tag {
+        display: inline-block;
+        font-size: 12px;
+        opacity: 0.8;
+        border: 1px solid var(--border);
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--glass);
+        margin-right: 8px;
+        margin-bottom: 8px;
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+      }
+
+      @media (max-width: 980px) {
+        .card {
+          grid-column: span 6;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .card {
+          grid-column: span 12;
+        }
+      }
+
+      /* Experience (Services replacement) */
+      .service {
+        grid-column: span 6;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: var(--card);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service h3 {
+        margin-top: 0;
+      }
+
+      .service::after {
+        content: "";
+        position: absolute;
+        inset: auto -20% -20% auto;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 30% 30%,
+          rgba(124, 92, 255, 0.1),
+          transparent 60%
+        );
+      }
+
+      /* Contact */
+      form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        padding: 18px;
+        border-radius: 18px;
+      }
+
+      form input,
+      form textarea {
+        background: var(--glass);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px 14px;
+        color: var(--text);
+        outline: none;
+        font-family: inherit;
+      }
+
+      form textarea {
+        grid-column: 1/-1;
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      form button {
+        justify-self: start;
+      }
+
+      @media (max-width: 700px) {
+        form {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Footer */
+      footer {
+        padding: 48px 0 60px;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+      }
+
+      /* Reveal animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .revealed {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* Prefers-reduced-motion */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container nav">
+        <a class="brand" href="#home">
+          <div class="logo">T</div>
+          <strong>Tharinda</strong>
+        </a>
+        <nav class="navlinks" id="navlinks">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+          <button class="btn" id="themeToggle" aria-label="Toggle theme">
+            🌗 Theme
+          </button>
+        </nav>
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+          ☰
+        </button>
+      </div>
+    </header>
+
+    <section class="hero container" id="home">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow reveal">
+            <span class="glow-dot"></span> Looking for Job Opportunities
+          </div>
+          <h1 class="reveal" style="transition-delay: 0.06s">
+            Hi, I'm Ashen Tharinda —
+            <span
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--accent),
+                  var(--accent-2)
+                );
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+              "
+            >
+              Software Engineering
+            </span>
+            Graduate & Full Stack Developer,Cloud Engineer,IoT & AI Solutions
+            Enthusiast
+          </h1>
+          <p class="lead reveal" style="transition-delay: 0.12s">
+            Passionate about Cloud Computing, DevOps, and AI. I build scalable
+            applications using Docker, Kubernetes, and Machine Learning.
+          </p>
+          <div class="cta reveal" style="transition-delay: 0.18s">
+            <a class="btn primary" href="#projects">🚀 View Work</a>
+            <a class="btn" href="#contact">📩 Contact Me</a>
+          </div>
+        </div>
+        <div class="avatar-card reveal" style="transition-delay: 0.2s">
+          <img
+            class="avatar"
+            src="images/profile-pic.jpeg"
+            alt="Tharinda Portrait"
+          />
+          <div class="rings" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="about">
+      <h2 class="section-title reveal">About Me</h2>
+      <p class="section-sub reveal" style="max-width: 800px">
+        I am a Software Engineering graduate from NSBM Green University with a
+        strong foundation in Full Stack Development and Cloud Engineering. I
+        thrive on solving complex problems using emerging technologies like
+        AI/ML and automated CI/CD pipelines.
+      </p>
+      <div class="about">
+        <div class="card reveal">
+          <h3>Technical Focus</h3>
+          <ul>
+            <li>
+              <strong>Cloud & DevOps:</strong> AWS, Google Cloud, Docker,
+              Kubernetes, Jenkins.
+            </li>
+            <li><strong>AI/ML:</strong> TensorFlow, PyTorch, Data Analysis.</li>
+            <li>
+              <strong>Development:</strong> Node.js, React, .NET, C#, Python.
+            </li>
+            <li><strong>Databases:</strong> SQL, MySQL & Mongodb.</li>
+          </ul>
+        </div>
+        <div class="card reveal" style="transition-delay: 0.06s">
+          <h3>Leadership & Activities</h3>
+          <ul>
+            <li>Secretary of Music Club - NSBM (2020-2024)</li>
+            <li>Member of Leo Club, FOSS, and IEEE Community</li>
+            <li>Strong critical thinking and team collaboration skills</li>
+            <li>Continuous self-learner in emerging tech</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="skills">
+      <h2 class="section-title reveal">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 0 2l-.15.08a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.38a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1 0-2l.15-.08a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+          ></path>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+        Technical Skills
+      </h2>
+      <p class="section-sub reveal">Proficiency in Modern Technologies</p>
+      <div class="skills">
+        <div class="skill reveal">
+          <strong>Python & AI/ML</strong>
+          <div class="bar" data-level="90"></div>
+        </div>
+        <div class="skill reveal" style="transition-delay: 0.04s">
+          <strong>Docker & K8s</strong>
+          <div class="bar" data-level="85"></div>
+        </div>
+        <div class="skill reveal" style="transition-delay: 0.08s">
+          <strong>AWS & Cloud</strong>
+          <div class="bar" data-level="80"></div>
+        </div>
+        <div class="skill reveal" style="transition-delay: 0.12s">
+          <strong>React & Node.js</strong>
+          <div class="bar" data-level="85"></div>
+        </div>
+        <div class="skill reveal" style="transition-delay: 0.16s">
+          <strong>CI/CD (Jenkins)</strong>
+          <div class="bar" data-level="75"></div>
+        </div>
+        <div class="skill reveal" style="transition-delay: 0.2s">
+          <strong>SQL / MySQL/ Mongodb</strong>
+          <div class="bar" data-level="88"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="projects">
+      <h2 class="section-title reveal">Featured Projects</h2>
+      <p class="section-sub reveal">Academic and Research implementations</p>
+      <div class="grid">
+        <article class="card reveal">
+          <div class="thumb">
+            <img
+              src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=800&auto=format&fit=crop"
+              alt="2048 Game"
+            />
+          </div>
+          <div class="content">
+            <span class="tag">IOT</span>
+
+            <h3>smart class room environment</h3>
+            <p>
+              A Smart Classroom Environment project typically aims to automate
+              and monitor physical classroom conditions to improve comfort and
+              energy efficiency. Given the author's expertise with IoT (Internet
+              of Things) and Full-Stack Web Development, this system likely
+              serves as a bridge between classroom hardware (sensors/switches)
+              and a web-based management dashboard.
+            </p>
+            <a
+              class="btn"
+              href="https://github.com/ashentharinda/smart-class-room-environment"
+              >View Code</a
+            >
+          </div>
+        </article>
+
+        <article class="card reveal" style="transition-delay: 0.04s">
+          <div class="thumb">
+            <img
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+              alt="Cloud Monitoring"
+            />
+          </div>
+          <div class="content">
+            <span class="tag">MQTT</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">mosquitto</span>
+            <h3>WeightSyncPro</h3>
+            <p>
+              Based on the repository details, WeightSyncPro is a specialized
+              industrial IoT solution designed to manage and synchronize
+              weighing scale data. It serves as a bridge between hardware
+              (scales/PLCs) and software systems (like ERPs), providing a modern
+              interface for weighing operations.
+            </p>
+            <a class="btn" href="https://github.com/ashentharinda/WeightSyncPro"
+              >View Code</a
+            >
+          </div>
+        </article>
+
+        <article class="card reveal" style="transition-delay: 0.08s">
+          <div class="thumb">
+            <img
+              src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=800&auto=format&fit=crop"
+              alt="Water Quality"
+            />
+          </div>
+          <div class="content">
+            <span class="tag">IoT</span>
+            <span class="tag">Research</span>
+            <span class="tag">Predictive AI</span>
+            <h3>Water Quality Prediction</h3>
+            <p>
+              Developed an IoT-based predictive model using ML algorithms to
+              forecast water quality based on real-time sensor data.
+            </p>
+            <a
+              class="btn"
+              href="https://github.com/ashentharinda/Water_quality_prediction-AI"
+              target="_blank"
+              >View Code</a
+            >
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="experience">
+      <h2 class="section-title reveal">Experience & Education</h2>
+      <p class="section-sub reveal">My professional journey</p>
+      <div class="grid">
+        <div class="service reveal" style="grid-column: span 6">
+          <span class="tag">Internship</span>
+          <h3>Software Developer Intern</h3>
+          <p style="color: var(--accent-2); margin-bottom: 10px">
+            Sesame senhora(pvt)Ltd | July 2025 - November 2025
+          </p>
+          <p>
+            <!-- You can add a short description of your expected responsibilities here. -->
+            Upcoming internship focusing on software development principles and
+            practices.
+          </p>
+        </div>
+
+        <div
+          class="service reveal"
+          style="transition-delay: 0.04s; grid-column: span 6"
+        >
+          <span class="tag">Internship</span>
+          <h3>Cloud Engineer Intern</h3>
+          <p style="color: var(--accent-2); margin-bottom: 10px">
+            SLT Digital Service Pvt Ltd | Sept 2023 - Mar 2024
+          </p>
+          <p>
+            Gained hands-on experience in cloud infrastructure and digital
+            services. Worked with enterprise-level deployments and maintained
+            cloud systems.
+          </p>
+        </div>
+
+        <div
+          class="service reveal"
+          style="transition-delay: 0.08s; grid-column: span 6"
+        >
+          <span class="tag">Education</span>
+          <h3>BSc (Hons) Software Engineering</h3>
+          <p style="color: var(--accent-2); margin-bottom: 10px">
+            NSBM Green University | 2020 - 2024
+          </p>
+          <p>
+            Completed degree with a focus on Software Engineering, algorithms,
+            and system design. Active member of IEEE and Music Club.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="contact">
+      <h2 class="section-title reveal">Get in touch</h2>
+      <p class="section-sub reveal">
+        Seeking Job opportunities as an AI Full Stack Engineer / Cloud Engineer.
+      </p>
+      <form class="reveal" id="contactForm">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Email address" required />
+        <textarea
+          name="message"
+          placeholder="How can I help you?"
+          required
+        ></textarea>
+        <button class="btn primary" type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+          "
+        >
+          <div>
+            <p>© <span id="year"></span> T.W.A.S Tharinda.</p>
+            <p style="font-size: 14px; opacity: 0.7">
+              ashentharinda1998@gmail.com | +94 70 101 1468
+            </p>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center">
+            <a
+              class="btn"
+              href="https://github.com/ashentharinda"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                ></path>
+              </svg>
+              GitHub</a
+            >
+            <a
+              class="btn"
+              href="https://www.linkedin.com/in/ashentharinda/"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              LinkedIn</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Navbar mobile toggle
+      const menuBtn = document.getElementById("menuBtn");
+      const navlinks = document.getElementById("navlinks");
+      menuBtn.addEventListener("click", () =>
+        navlinks.classList.toggle("open")
+      );
+
+      // Theme toggle (persist)
+      const themeToggle = document.getElementById("themeToggle");
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "light")
+        document.documentElement.classList.add("light");
+      themeToggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("light");
+        localStorage.setItem(
+          "theme",
+          document.documentElement.classList.contains("light")
+            ? "light"
+            : "dark"
+        );
+      });
+
+      // Year set
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Reveal on scroll using IntersectionObserver
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("revealed");
+              // Animate skill bars when section visible
+              if (e.target.classList.contains("skill")) {
+                const bar = e.target.querySelector(".bar");
+                const level = bar.getAttribute("data-level");
+                bar.style.transition = "transform .9s cubic-bezier(.2,.8,.2,1)";
+                bar.style.transform = `scaleX(${level / 100})`;
+              }
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      document
+        .querySelectorAll(".reveal, .skill")
+        .forEach((el) => io.observe(el));
+
+      // Contact form (demo only)
+      document.getElementById("contactForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        const name = data.get("name");
+        alert(
+          `Hi ${name}, this is a demo form. Please email me at ashentharinda1998@gmail.com`
+        );
+        e.target.reset();
+      });
+
+      // Hover interaction for skill bars
+      document.querySelectorAll(".skill").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          card.style.transform = "translateY(-3px)";
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "";
+        });
+      });
+    </script>
+  </body>
+</html>
